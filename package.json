@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "tallinnjs",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start:webapp": "yarn workspace webapp dev",
+    "start:backend": "yarn workspace backend dev",
+    "start:bot": "yarn workspace bot dev"
+  }
+}

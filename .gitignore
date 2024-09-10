@@ -1,0 +1,8 @@
+.idea
+.DS_Store
+.git.private
+node_modules
+packages/backend/dist
+packages/bot/dist
+.env
+**/yarn-error.log
