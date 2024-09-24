@@ -8,7 +8,7 @@ interface TalkWizardWithSession extends Scenes.WizardSessionData {
 
 export type TalkWizardContext = Scenes.WizardContext<TalkWizardWithSession>;
 
-export const createTalkWizard = new Scenes.WizardScene(
+export const createTalkScene = new Scenes.WizardScene(
   'create-talk',
   // title
   async (ctx) => {

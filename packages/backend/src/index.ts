@@ -42,12 +42,16 @@ app.post('/api/talks', (req, res) => {
   const hash = initData.get('hash');
   let dataToCheck: string[] = [];
 
+  // creating an array for the future data-check-string
   initData.sort();
   initData.forEach((val, key) => key !== 'hash' && dataToCheck.push(`${key}=${val}`));
 
+  const dataCheckString = dataToCheck.join('\n');
   const secret = createHmac('sha256', 'WebAppData').update(botToken);
-  const resultHash = createHmac('sha256', secret.digest()).update(dataToCheck.join('\n')).digest('hex');
+  const resultHash = createHmac('sha256', secret.digest()).update(dataCheckString).digest('hex');
 
+  // comparing the received hash parameter with the hexadecimal representation of the HMAC-SHA-256 signature of the data-check-string
+  // with the secret key, which is the HMAC-SHA-256 signature of the bot's token with the constant string WebAppData used as a key.
   if (hash === resultHash) {
     talks.createTalk(req.body.talk);
 
